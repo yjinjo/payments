@@ -80,6 +80,18 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-debug-toolbar"
+version = "3.8.1"
+description = "A configurable set of panels that display various debug information about the current request/response."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2.4"
+sqlparse = ">=0.2"
+
+[[package]]
 name = "djlint"
 version = "1.19.16"
 description = "HTML Template Linter and Formatter"
@@ -242,7 +254,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "64e5320338392dc44a953c82653a5b8741621fb79423ca9aa673016bfb539293"
+content-hash = "a5755dba70b7c9d48a432f40422ada7b64fd5be671fd2735f846b9b4a49b704b"
 
 [metadata.files]
 asgiref = [
@@ -290,6 +302,10 @@ cssbeautifier = [
 django = [
     {file = "Django-4.1.7-py3-none-any.whl", hash = "sha256:f2f431e75adc40039ace496ad3b9f17227022e8b11566f4b363da44c7e44761e"},
     {file = "Django-4.1.7.tar.gz", hash = "sha256:44f714b81c5f190d9d2ddad01a532fe502fa01c4cb8faf1d081f4264ed15dcd8"},
+]
+django-debug-toolbar = [
+    {file = "django_debug_toolbar-3.8.1-py3-none-any.whl", hash = "sha256:879f8a4672d41621c06a4d322dcffa630fc4df056cada6e417ed01db0e5e0478"},
+    {file = "django_debug_toolbar-3.8.1.tar.gz", hash = "sha256:24ef1a7d44d25e60d7951e378454c6509bf536dce7e7d9d36e7c387db499bc27"},
 ]
 djlint = [
     {file = "djlint-1.19.16-py3-none-any.whl", hash = "sha256:0817bbc69df234a4a6208685c6ff2d521f64a330eb1f7c0a052025233a21971c"},
