@@ -38,7 +38,7 @@ SECRET_KEY = os.environ.get("SETTINGS_SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=True)  # 1, t, true
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = [env.list("ALLOWED_HOSTS", default=[])]
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "debug_toolbar",
+    "django_bootstrap5",
     # my apps
     "accounts",
 ]
@@ -73,7 +74,10 @@ ROOT_URLCONF = "mysite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
