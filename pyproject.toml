@@ -8,6 +8,8 @@ authors = ["yjinjo <yjinjo@berkeley.edu>"]
 python = "^3.11"
 Django = "4.1.7"
 python-dotenv = "^1.0.0"
+black = "23.1.0"
+djlint = "1.19.16"
 
 [tool.poetry.dev-dependencies]
 
