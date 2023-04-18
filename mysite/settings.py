@@ -40,7 +40,6 @@ DEBUG = env.bool("DEBUG", default=True)  # 1, t, true
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,6 +55,7 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     # my apps
     "accounts",
+    "mall_test",
 ]
 
 MIDDLEWARE = [
@@ -92,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -103,7 +102,6 @@ DATABASES = {
     # }
     "default": env.db("DATABASE_URL", default=f"sqlite:////{BASE_DIR / 'db.sqlite3'}"),
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -125,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "accounts.User"
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -138,13 +135,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = env.str("MEDIA_ROOT", default=BASE_DIR / "mediafiles")
