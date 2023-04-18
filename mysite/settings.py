@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     # my apps
     "accounts",
+    "mall",
     "mall_test",
 ]
 
