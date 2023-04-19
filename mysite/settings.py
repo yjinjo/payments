@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     "debug_toolbar",
     "django_bootstrap5",
+    "sorl.thumbnail",
     # my apps
     "accounts",
     "mall",
