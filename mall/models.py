@@ -147,7 +147,7 @@ class Order(models.Model):
     ) -> "Order":
         cart_product_list: List[CartProduct] = list(cart_product_qs)
 
-        total_amount = sum(cart_product.amount for cart_product in cart_product_qs)
+        total_amount = sum(cart_product.amount for cart_product in cart_product_list)
         order = cls.objects.create(user=user, total_amount=total_amount)
 
         ordered_product_list = []
@@ -206,6 +206,10 @@ class AbstractPortonePayment(models.Model):
         "결제 성공 여부", default=False, db_index=True, editable=False
     )
 
+    @property
+    def merchant_uid(self) -> str:
+        return str(self.uid)
+
     @cached_property
     def api(self):
         return Iamport(
@@ -214,7 +218,7 @@ class AbstractPortonePayment(models.Model):
 
     def update(self):
         try:
-            self.meta = self.api.find(merchant_uid=self.uid)
+            self.meta = self.api.find(merchant_uid=self.merchant_uid)
         except (Iamport.ResponseError, Iamport.HttpError) as e:
             logger.error(str(e), exc_info=e)
             raise Http404("포트원에서 결제 내역을 찾을 수 없습니다.")
@@ -239,6 +243,6 @@ class OrderPayment(AbstractPortonePayment):
             order=order,
             name=order.name,
             desired_amount=order.total_amount,
-            buyer_name=order.user.get_full_name(),
+            buyer_name=order.user.get_full_name() or order.user.username,
             buyer_email=order.user.email,
         )
