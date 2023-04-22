@@ -127,6 +127,20 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def can_pay(self) -> bool:
+        return self.status in (self.Status.REQUESTED, self.Status.FAILED_PAYMENT)
+
+    @property
+    def name(self) -> str:
+        first_product = self.product_set.first()
+        if first_product is None:
+            return "등록된 상품이 없습니다."
+
+        size = self.product_set.all().count()
+        if size < 2:
+            return first_product.name
+        return f"{first_product.name} 외 {size - 1}건"
+
     @classmethod
     def create_from_cart(
         cls, user: User, cart_product_qs: QuerySet[CartProduct]
@@ -217,8 +231,14 @@ class AbstractPortonePayment(models.Model):
 
 
 class OrderPayment(AbstractPortonePayment):
-    order = models.ForeignKey(
-        Order,
-        on_delete=models.CASCADE,
-        db_constraint=False,
-    )
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, db_constraint=False)
+
+    @classmethod
+    def create_by_order(cls, order: Order) -> "OrderPayment":
+        return cls.objects.create(
+            order=order,
+            name=order.name,
+            desired_amount=order.total_amount,
+            buyer_name=order.user.get_full_name(),
+            buyer_email=order.user.email,
+        )
