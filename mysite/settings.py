@@ -47,14 +47,18 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
+    "django.contrib.humanize",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party apps
     "debug_toolbar",
     "django_bootstrap5",
+    "sorl.thumbnail",
+    "widget_tweaks",
     # my apps
     "accounts",
+    "mall",
     "mall_test",
 ]
 
@@ -138,6 +142,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = env.str("STATIC_ROOT", default=BASE_DIR / "staticfiles")
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = env.str("MEDIA_ROOT", default=BASE_DIR / "mediafiles")
