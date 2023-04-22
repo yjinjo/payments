@@ -135,6 +135,14 @@ docs = ["furo (>=2021.8.17b43,<2021.9.0)", "sphinx (>=3.5.0)", "sphinx-notfound-
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
+name = "django-widget-tweaks"
+version = "1.4.12"
+description = "Tweak the form field rendering in templates, not in python-level form definitions."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "djlint"
 version = "1.19.16"
 description = "HTML Template Linter and Formatter"
@@ -370,7 +378,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "37ef245dd36baae73554ff29ac593a7e5aec1eef4ffe559c50ca342184a0a296"
+content-hash = "adb8109d3c5c1033820a3b37619f211c55e61578cfaa1bbd452d78548973585e"
 
 [metadata.files]
 asgiref = [
@@ -438,6 +446,10 @@ django-debug-toolbar = [
 django-environ = [
     {file = "django-environ-0.9.0.tar.gz", hash = "sha256:bff5381533056328c9ac02f71790bd5bf1cea81b1beeb648f28b81c9e83e0a21"},
     {file = "django_environ-0.9.0-py2.py3-none-any.whl", hash = "sha256:f21a5ef8cc603da1870bbf9a09b7e5577ab5f6da451b843dbcc721a7bca6b3d9"},
+]
+django-widget-tweaks = [
+    {file = "django-widget-tweaks-1.4.12.tar.gz", hash = "sha256:9bfc5c705684754a83cc81da328b39ad1b80f32bd0f4340e2a810cbab4b0c00e"},
+    {file = "django_widget_tweaks-1.4.12-py3-none-any.whl", hash = "sha256:fe6b17d5d595c63331f300917980db2afcf71f240ab9341b954aea8f45d25b9a"},
 ]
 djlint = [
     {file = "djlint-1.19.16-py3-none-any.whl", hash = "sha256:0817bbc69df234a4a6208685c6ff2d521f64a330eb1f7c0a052025233a21971c"},
